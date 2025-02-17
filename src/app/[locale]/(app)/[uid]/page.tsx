@@ -24,9 +24,9 @@ export async function generateMetadata({
 }: {
   params: Promise<Params>;
 }): Promise<Metadata> {
-  const { uid } = await params;
+  const { uid, locale } = await params;
   const client = createClient();
-  const page = await client.getByUID("page", uid).catch(() => notFound());
+  const page = await client.getByUID("page", uid, { lang: shortLocaleToLong(locale) }).catch(() => notFound());
 
   return {
     title: page.data.meta_title,
@@ -46,10 +46,12 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const client = createClient();
-  const pages = await client.getAllByType("page");
-
-  return pages.map((page) => {
-    return { uid: page.uid };
-  });
-}
+    const client = createClient();
+    const pages = await client.getAllByType("page", { lang: "*" });
+  
+    return pages.map((page) => ({
+      uid: page.uid,
+      locale: page.lang,
+    }));
+  }
+  
