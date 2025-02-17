@@ -5,16 +5,17 @@ import { Post } from "@/stores/features/news";
 import { Metadata } from "next";
 import { ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+
 interface NewDetailPageProps {
-  params: Promise<{
+  params: {
     locale: string;
     uid: string;
     slug: string;
-  }>;
+  };
 }
+
 const NewDetailPage = async ({ params }: NewDetailPageProps) => {
-  const resolvedParams = await params;
-  const { locale, slug } = resolvedParams;
+  const { locale, slug } = params;
 
   return <NewDetailFeatures slug={slug} locale={locale} />;
 };
@@ -25,11 +26,10 @@ export async function generateMetadata(
   { params }: NewDetailPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const resolvedParams = await params; // ✅ Giải quyết Promise
-  const { slug, locale } = resolvedParams; // ✅ Lấy locale từ route
+  const { slug, locale } = params;
 
   const parentMetadata = await parent;
-  const article = await getPostBySlug(slug); // ✅ Fetch không cache
+  const article = await getPostBySlug(slug);
 
   if (!article) {
     return notFound();
@@ -40,11 +40,11 @@ export async function generateMetadata(
   const featuredImage = article.feature_image || "/thumbnail.png";
 
   return {
-    title: articleTitle || META_DATA.title || undefined, // ✅ Không để null
+    title: articleTitle || META_DATA.title || undefined,
     description: articleDescription || META_DATA.description || undefined,
     openGraph: {
       images: [featuredImage],
-      title: articleTitle || META_DATA.title || undefined, // ✅ Fix lỗi type
+      title: articleTitle || META_DATA.title || undefined,
       description: articleDescription || META_DATA.description || undefined,
       url: `${WEBSITE_HOST_URL}/${locale}/news/${slug}`,
       locale,
@@ -55,7 +55,7 @@ export async function generateMetadata(
       canonical: `${WEBSITE_HOST_URL}/${locale}/news/${slug}`,
     },
     twitter: {
-      title: articleTitle || META_DATA.title || undefined, // ✅ Fix lỗi
+      title: articleTitle || META_DATA.title || undefined,
       description: articleDescription || META_DATA.description || undefined,
       images: [featuredImage],
       card: "summary_large_image",
@@ -66,13 +66,12 @@ export async function generateMetadata(
 export async function generateStaticParams({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  const resolvedParams = await params; // ✅ Giải quyết Promise
-  const { locale } = resolvedParams; // ✅ Lấy locale từ route
+  const { locale } = params;
 
   try {
-    const res = await getListNews(); // ✅ Tránh lỗi dữ liệu cũ
+    const res = await getListNews();
 
     if (!Array.isArray(res)) {
       console.error("Invalid API response:", res);
@@ -80,10 +79,10 @@ export async function generateStaticParams({
     }
 
     return res
-      .filter((article: Post) => article?.slug) // ✅ Lọc bài hợp lệ
+      .filter((article: Post) => article?.slug)
       .map((article: Post) => ({
         slug: article.slug,
-        locale, // ✅ Lấy locale từ route, không từ API
+        locale,
       }));
   } catch (error) {
     console.error("Error fetching articles:", error);
