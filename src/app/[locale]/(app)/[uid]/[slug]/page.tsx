@@ -1,5 +1,5 @@
 import { getListNews, getPostBySlug } from "@/actions/news";
-import { META_DATA, WEBSITE_HOST_URL } from "@/configs";
+import { API_URL, META_DATA, WEBSITE_HOST_URL } from "@/configs";
 import NewDetailFeatures from "@/features/new-detail";
 import { Post } from "@/stores/features/news";
 import { Metadata } from "next";
@@ -56,25 +56,28 @@ export async function generateMetadata(
   };
 }
 
-// export async function generateStaticParams() {
-//   try {
-//     const res = await getListNews();
+export async function generateStaticParams({ params }: NewDetailPageProps) {
+  const { uid, locale } = await params;
+  try {
+    const res = await getListNews();
 
-//     if (!Array.isArray(res)) {
-//       console.error("Invalid API response:", res);
-//       return [];
-//     }
+    if (!Array.isArray(res)) {
+      console.error("API response is not an array:", res);
+      return [];
+    }
 
-//     return res
-//       .filter((article: Post) => Boolean(article?.slug))
-//       .map((article: Post) => ({
-//         slug: article.slug,
-//       }));
-//   } catch (error) {
-//     console.error("Error fetching articles:", error);
-//     return [];
-//   }
-// }
+    return res
+      .filter((article: Post) => article?.slug)
+      .map((article: Post) => ({
+        locale,
+        uid,
+        slug: article.slug,
+      }));
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+    return [];
+  }
+}
 
 const NewDetailPage = async ({ params }: NewDetailPageProps) => {
   const { locale, slug } = await params;
