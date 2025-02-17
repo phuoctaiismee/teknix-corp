@@ -14,14 +14,6 @@ interface NewDetailPageProps {
   }>;
 }
 
-const NewDetailPage = async ({ params }: NewDetailPageProps) => {
-  const { locale, slug } = await params;
-
-  return <NewDetailFeatures slug={slug} locale={locale} />;
-};
-
-export default NewDetailPage;
-
 export async function generateMetadata(
   { params }: NewDetailPageProps,
   parent: ResolvingMetadata
@@ -64,25 +56,30 @@ export async function generateMetadata(
   };
 }
 
-export async function generateStaticParams({ params }: NewDetailPageProps) {
-  const { locale } = await params;
+// export async function generateStaticParams() {
+//   try {
+//     const res = await getListNews();
 
-  try {
-    const res = await getListNews();
+//     if (!Array.isArray(res)) {
+//       console.error("Invalid API response:", res);
+//       return [];
+//     }
 
-    if (!Array.isArray(res)) {
-      console.error("Invalid API response:", res);
-      return [];
-    }
+//     return res
+//       .filter((article: Post) => Boolean(article?.slug))
+//       .map((article: Post) => ({
+//         slug: article.slug,
+//       }));
+//   } catch (error) {
+//     console.error("Error fetching articles:", error);
+//     return [];
+//   }
+// }
 
-    return res
-      .filter((article: Post) => article?.slug)
-      .map((article: Post) => ({
-        slug: article.slug,
-        locale,
-      }));
-  } catch (error) {
-    console.error("Error fetching articles:", error);
-    return [];
-  }
-}
+const NewDetailPage = async ({ params }: NewDetailPageProps) => {
+  const { locale, slug } = await params;
+
+  return <NewDetailFeatures slug={slug} locale={locale} />;
+};
+
+export default NewDetailPage;
