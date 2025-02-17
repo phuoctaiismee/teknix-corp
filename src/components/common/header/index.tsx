@@ -157,7 +157,7 @@ const SiteHeader = async ({ locale }: { locale: string }) => {
                                 <SheetClose asChild key={idx}>
                                   <PrismicNextLink
                                     key={idx}
-                                    locale={locale}
+                                    // locale={locale}
                                     field={item.link_href}
                                     className="text-[15px] font-medium hover:text-[#00359E] transition-colors duration-300 hover:bg-gray-100 rounded-[8px] w-full py-2.5 px-2"
                                   >
@@ -175,7 +175,7 @@ const SiteHeader = async ({ locale }: { locale: string }) => {
                         <PrismicNextLink
                           field={nav?.data.link}
                           key={index}
-                          locale={locale}
+                        //   locale={locale}
                           className="text-[15px] font-medium hover:text-[#00359E] transition-colors duration-300 hover:bg-gray-100 rounded-[8px] w-full py-2.5 px-2"
                         >
                           {nav?.data.name}
