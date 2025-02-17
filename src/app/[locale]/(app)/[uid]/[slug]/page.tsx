@@ -7,15 +7,15 @@ import { ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
 interface NewDetailPageProps {
-  params: {
+  params: Promise<{
     locale: string;
     uid: string;
     slug: string;
-  };
+  }>;
 }
 
 const NewDetailPage = async ({ params }: NewDetailPageProps) => {
-  const { locale, slug } = params;
+  const { locale, slug } = await params;
 
   return <NewDetailFeatures slug={slug} locale={locale} />;
 };
@@ -26,13 +26,14 @@ export async function generateMetadata(
   { params }: NewDetailPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { slug, locale } = params;
+  const { slug, locale } = await params;
 
   const parentMetadata = await parent;
   const article = await getPostBySlug(slug);
 
   if (!article) {
-    return notFound();
+    notFound();
+    return {};
   }
 
   const articleTitle = article.title || parentMetadata.title;
@@ -63,12 +64,8 @@ export async function generateMetadata(
   };
 }
 
-export async function generateStaticParams({
-  params,
-}: {
-  params: { locale: string };
-}) {
-  const { locale } = params;
+export async function generateStaticParams({ params }: NewDetailPageProps) {
+  const { locale } = await params;
 
   try {
     const res = await getListNews();
