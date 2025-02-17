@@ -56,28 +56,33 @@ export async function generateMetadata(
   };
 }
 
-export async function generateStaticParams({ params }: NewDetailPageProps) {
-  const { uid, locale } = await params;
-  try {
-    const res = await getListNews();
-
-    if (!Array.isArray(res)) {
-      console.error("API response is not an array:", res);
+export async function generateStaticParams() {
+    const locales = ["en", "vi"]; // Danh sách locale
+    const uids = ["news"]; // Danh sách uid (trong trường hợp này chỉ có "news")
+  
+    try {
+      const res = await getListNews();
+  
+      if (!Array.isArray(res)) {
+        console.error("API response is not an array:", res);
+        return [];
+      }
+  
+      return res.flatMap((article: Post) =>
+        locales.flatMap((locale) =>
+          uids.map((uid) => ({
+            locale,
+            uid,
+            slug: article.slug,
+          }))
+        )
+      );
+    } catch (error) {
+      console.error("Error fetching articles:", error);
       return [];
     }
-
-    return res
-      .filter((article: Post) => article?.slug)
-      .map((article: Post) => ({
-        locale,
-        uid,
-        slug: article.slug,
-      }));
-  } catch (error) {
-    console.error("Error fetching articles:", error);
-    return [];
   }
-}
+  
 
 const NewDetailPage = async ({ params }: NewDetailPageProps) => {
   const { locale, slug } = await params;
