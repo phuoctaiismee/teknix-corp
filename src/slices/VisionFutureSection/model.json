@@ -1,0 +1,87 @@
+{
+  "id": "vision_future_section",
+  "type": "SharedSlice",
+  "name": "VisionFutureSection",
+  "description": "VisionFutureSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "name": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Name",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading5"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "contents": {
+          "type": "Group",
+          "config": {
+            "label": "Contents",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "Name",
+                  "placeholder": ""
+                }
+              },
+              "title_hovered": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Title Hovered",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "heading5"
+                }
+              },
+              "content_hovered": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Content Hovered",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em,list-item,o-list-item,rtl"
+                }
+              }
+            }
+          }
+        },
+        "background": {
+          "type": "Image",
+          "config": {
+            "label": "Background",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

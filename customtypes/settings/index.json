@@ -1,0 +1,167 @@
+{
+  "format": "page",
+  "id": "settings",
+  "label": "Settings",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "light_logo": {
+        "type": "Image",
+        "config": {
+          "label": "Light Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "socicals": {
+        "type": "Group",
+        "config": {
+          "label": "Socicals",
+          "repeat": true,
+          "fields": {
+            "social_icon": {
+              "type": "Select",
+              "config": {
+                "label": "Social Icon",
+                "placeholder": "",
+                "options": ["facebook", "instagram", "x", "youtube"]
+              }
+            },
+            "social_linnk": {
+              "type": "Link",
+              "config": {
+                "label": "Social Linnk",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "navigations": {
+        "type": "Group",
+        "config": {
+          "label": "Navigations",
+          "repeat": true,
+          "fields": {
+            "navigation_item": {
+              "type": "Link",
+              "config": {
+                "label": "Navigation Item",
+                "select": "document",
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "banner_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Banner Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      },
+      "banner_text_button": {
+        "type": "Text",
+        "config": {
+          "label": "Banner Text Button",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading5"
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      },
+      "copyright_text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Copyright Text",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      },
+      "footer_links": {
+        "type": "Group",
+        "config": {
+          "label": "Footer Links",
+          "repeat": true,
+          "fields": {
+            "footer_links": {
+              "type": "Link",
+              "config": {
+                "label": "Footer Links",
+                "select": "document",
+                "repeat": false,
+                "customtypes": ["footers"]
+              }
+            }
+          }
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    }
+  }
+}

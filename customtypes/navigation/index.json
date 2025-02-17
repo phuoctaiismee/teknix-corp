@@ -1,0 +1,62 @@
+{
+  "format": "custom",
+  "id": "navigation",
+  "label": "Navigation",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "name": {
+        "type": "Text",
+        "config": {
+          "label": "Name",
+          "placeholder": ""
+        }
+      },
+      "link": {
+        "type": "Link",
+        "config": {
+          "label": "Link",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "child_link": {
+        "type": "Group",
+        "config": {
+          "label": "Child Link",
+          "repeat": true,
+          "fields": {
+            "link_name": {
+              "type": "Text",
+              "config": {
+                "label": "Link Name",
+                "placeholder": ""
+              }
+            },
+            "link_href": {
+              "type": "Link",
+              "config": {
+                "label": "Link Href",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
