@@ -12,6 +12,7 @@ const GridContent = () => {
   const mainNews = useMemo(() => news?.posts?.[0], [news]);
   const secondaryNews = useMemo(() => news?.posts?.slice(1, 3), [news?.posts]);
   const otherNews = useMemo(() => news?.posts?.slice(3, 5), [news?.posts]);
+
   if (isLoading) return <GridSkeleton />;
   return (
     <div className="grid grid-cols-5 gap-8">

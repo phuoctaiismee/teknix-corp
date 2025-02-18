@@ -77,7 +77,7 @@ const EventsSectionFeatures = ({ primary }: Content.EventSectionSlice) => {
             ),
           }}
         />
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <div className="flex w-full items-center gap-6 h-[500px]">
             <MainCard {...data[0]} />
             <div className="max-w-[470px] h-full relative">
@@ -111,6 +111,13 @@ const EventsSectionFeatures = ({ primary }: Content.EventSectionSlice) => {
           >
             View All
           </Button>
+        </div>
+        <div className="hidden md:block lg:hidden">
+          <div className="flex flex-col gap-5">
+            {data.map((item, index) => (
+              <MainCard key={index} {...item} />
+            ))}
+          </div>
         </div>
       </Bounded>
     </div>

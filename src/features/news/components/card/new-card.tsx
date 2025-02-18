@@ -21,9 +21,10 @@ const NewCard = ({
   className,
   classNameDescription,
 }: NewCardProps) => {
+  const locale = sessionStorage.getItem("locale");
   return (
     <Link
-      href={`/news/${slug}`}
+      href={`/${locale ?? ""}/news/${slug}`}
       className={cn(
         "p-6 rounded-[8px] relative flex flex-col justify-between h-full w-full bg-cover bg-center bg-no-repeat group overflow-hidden",
         className
@@ -37,6 +38,7 @@ const NewCard = ({
         src={feature_image ?? ""}
         alt={title}
         fill
+        sizes="(max-width: 768px) 100vw, 50vw"
         className="z-[-1] object-cover group-hover:scale-105 transition-all duration-300"
       />
       <div className="opacity-0" />

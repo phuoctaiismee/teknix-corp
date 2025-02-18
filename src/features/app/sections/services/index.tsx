@@ -12,9 +12,9 @@ const ServiceSectionFeatures = ({ primary }: Content.ServiceSectionSlice) => {
       style={{
         backgroundImage: `url(${primary.background.url})`,
       }}
-      className="md:h-[956px] bg-cover bg-no-repeat bg-center flex items-center py-12 md:py-20 overflow-hidden"
+      className="lg:h-[956px] bg-cover bg-no-repeat bg-center flex items-center py-12 md:py-20 overflow-hidden"
     >
-      <Bounded className="grid grid-cols-1 md:grid-cols-2 gap-12  items-center">
+      <Bounded className="grid grid-cols-1 lg:grid-cols-2 gap-12  items-center">
         <div className="flex flex-col justify-between gap-10 h-full">
           <div className="flex flex-col gap-4">
             <PrismicRichText

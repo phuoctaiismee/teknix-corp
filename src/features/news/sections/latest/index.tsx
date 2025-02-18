@@ -47,12 +47,12 @@ const LatestNewsSectionFeatures = ({ primary }: Content.LatestNewsSlice) => {
             </Button>
           </div>
         </div>
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <div className="flex flex-col gap-14">
             <GridContentLatestNew />
           </div>
         </div>
-        <div className="block md:hidden">
+        <div className="block lg:hidden">
           <CarouselContentLatestNew />
         </div>
       </Bounded>

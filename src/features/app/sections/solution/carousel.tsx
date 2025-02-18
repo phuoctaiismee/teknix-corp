@@ -64,6 +64,7 @@ const CarouselSolution = ({
               alt={image.text ?? ""}
               loading="lazy"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
@@ -79,7 +80,7 @@ const CarouselSolution = ({
         size="icon"
         variant="ghost"
         onClick={handleNextSlide}
-        className="absolute top-1/2 -translate-y-1/2 z-10 size-[60px] rounded-full right-4 bg-gradient-to-r from-slate-200/0 via-slate-300/10 to-slate-500/30 backdrop-blur-[24px] [&_svg]:size-5"
+        className="absolute top-1/2 -translate-y-1/2 z-10 size-[60px] rounded-full right-4 bg-gradient-to-r from-slate-200/0 via-slate-300/10 to-slate-500/30 backdrop-blur-[24px] [&_svg]:size-5 text-white"
       >
         <ChevronRight className="size-5" />
       </Button>

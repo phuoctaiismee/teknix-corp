@@ -30,11 +30,13 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { shortLocaleToLong } from "@/i18n/routing";
 
 const SiteHeader = async ({ locale }: { locale: string }) => {
   const client = createClient();
-  const settings = await client.getSingle("settings");
-  const locales = await getLocales(settings, client);
+  const settings = await client.getSingle("settings", {
+    lang: shortLocaleToLong(locale),
+  });
 
   const navigations = await Promise.all(
     settings.data.navigations.map((item) => {
@@ -42,7 +44,9 @@ const SiteHeader = async ({ locale }: { locale: string }) => {
         isFilled.contentRelationship(item.navigation_item) &&
         item.navigation_item.uid
       ) {
-        return client.getByUID("navigation", item.navigation_item.uid);
+        return client.getByUID("navigation", item.navigation_item.uid, {
+          lang: shortLocaleToLong(locale),
+        });
       }
     })
   );
@@ -117,7 +121,7 @@ const SiteHeader = async ({ locale }: { locale: string }) => {
         <Button variant="ghost" size="icon">
           <Search className="size-4" />
         </Button>
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -193,7 +197,7 @@ const SiteHeader = async ({ locale }: { locale: string }) => {
                       field={settings.data.copyright_text}
                       components={{
                         paragraph: ({ children }) => (
-                          <Paragraph className="text-[13px] text-[#6D6D6D]">
+                          <Paragraph className="text-[13px] md:text-base text-[#6D6D6D]">
                             {children}
                           </Paragraph>
                         ),
@@ -205,10 +209,11 @@ const SiteHeader = async ({ locale }: { locale: string }) => {
             </SheetContent>
           </Sheet>
         </div>
-        <div className="hidden md:flex items-center gap-3">{socialItems}</div>
+        <div className="hidden lg:flex items-center gap-3">{socialItems}</div>
       </div>
     </Bounded>
   );
 };
+
 
 export default SiteHeader;

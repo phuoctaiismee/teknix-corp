@@ -1,15 +1,28 @@
 import createNextIntlPlugin from "next-intl/plugin";
+import { NextConfig } from "next";
 
 const withNextIntl = createNextIntlPlugin();
 
-/** @type {import('next').NextConfig} */
+/** @type {NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      "images.unsplash.com",
-      "images.prismic.io",
-      "s3-alpha-sig.figma.com",
-      "ghost-teknixcorp.up.railway.app"
+    remotePatterns: [
+      {
+        protocol: "https" as const,
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https" as const,
+        hostname: "images.prismic.io",
+      },
+      {
+        protocol: "https" as const,
+        hostname: "s3-alpha-sig.figma.com",
+      },
+      {
+        protocol: "https" as const,
+        hostname: "ghost-teknixcorp.up.railway.app",
+      },
     ],
   },
   compiler: {

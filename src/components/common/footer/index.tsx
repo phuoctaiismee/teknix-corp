@@ -27,7 +27,9 @@ const SiteFooter = async ({ locale }: SiteFooterProps) => {
         isFilled.contentRelationship(item.footer_links) &&
         item.footer_links.uid
       ) {
-        return client.getByUID("footers", item.footer_links.uid);
+        return client.getByUID("footers", item.footer_links.uid, {
+          lang: shortLocaleToLong(locale),
+        });
       }
     })
   );

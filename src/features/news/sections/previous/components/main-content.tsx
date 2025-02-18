@@ -68,8 +68,8 @@ const MainContentPreviousNews = ({
     limit: "all",
   });
   return (
-    <Bounded className="grid grid-cols-1 md:grid-cols-3 divide-x divide-[#E6E6E6]">
-      <div className="col-span-2 md:pr-12">
+    <Bounded className="grid grid-cols-1 lg:grid-cols-3 divide-x divide-[#E6E6E6]">
+      <div className="col-span-2 lg:pr-12">
         <div className="flex flex-col gap-8">
           {/* HEADING */}
           <div className="flex flex-col gap-2">
@@ -105,7 +105,7 @@ const MainContentPreviousNews = ({
             </div>
           </div>
           {/* LIST NEWS */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             {isLoading || isFetching ? (
               <ListNewsSkeleton />
             ) : (
@@ -117,7 +117,7 @@ const MainContentPreviousNews = ({
             )}
           </div>
 
-          <div className="block md:hidden">
+          <div className="block lg:hidden">
             <Carousel
               opts={{
                 dragFree: true,
@@ -129,8 +129,13 @@ const MainContentPreviousNews = ({
                   <ListNewsMobileSkeleton />
                 ) : (
                   allData?.posts.map((item, index) => (
-                    <CarouselItem key={index} className="basis-4/5">
-                      <CardNewHorizontal className="h-[428px]" {...item} />
+                    <CarouselItem key={index} className="basis-4/5 md:basis-1/2">
+                      <CardNewHorizontal
+                        className="h-[428px] md:h-[500px]"
+                        classNameDescription="line-clamp-2"
+                        classNameImage="min-h-[300px]"
+                        {...item}
+                      />
                     </CarouselItem>
                   ))
                 )}
@@ -139,7 +144,7 @@ const MainContentPreviousNews = ({
             </Carousel>
           </div>
           {/* PAGINATION */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Pagination
               page={page}
               totalPages={totalPages}
@@ -150,7 +155,7 @@ const MainContentPreviousNews = ({
           </div>
         </div>
       </div>
-      <div className="hidden md:block col-span-1 md:pl-12">
+      <div className="hidden lg:block col-span-1 md:pl-12">
         <div className="flex flex-col w-full gap-8 max-h-[544px]">
           {/* SEARCH */}
           <HoverBorderGradient

@@ -21,10 +21,11 @@ import {
 import { useState } from "react";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
+import Paragraph from "@/components/common/typography/paragraph";
 
 const CarouselAccordion = ({ primary }: Content.CaseStudiesSectionSlice) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery("(max-width: 1024px)");
   return (
     <Bounded className="flex flex-col gap-12">
       <div className="flex flex-col gap-2">
@@ -59,7 +60,7 @@ const CarouselAccordion = ({ primary }: Content.CaseStudiesSectionSlice) => {
       </div>
 
       <div
-        className="flex flex-col md:flex-row md:h-[842px] gap-12 relative overflow-hidden"
+        className="flex flex-col lg:flex-row lg:h-[848px] gap-12 relative overflow-hidden"
         data-aos="fade-right"
       >
         {/* Carousel */}
@@ -76,7 +77,7 @@ const CarouselAccordion = ({ primary }: Content.CaseStudiesSectionSlice) => {
             orientation={isMobile ? "horizontal" : "vertical"}
             className="w-full h-full"
           >
-            <CarouselContent className="h-full mt-0 md:h-[842px]">
+            <CarouselContent className="h-full mt-0 lg:h-[842px]">
               {primary.casestudies.map((item, index) => (
                 <CarouselItem
                   key={index}
@@ -85,7 +86,7 @@ const CarouselAccordion = ({ primary }: Content.CaseStudiesSectionSlice) => {
                     isMobile ? "pl-4" : "basis-full p-0 pb-4"
                   )}
                 >
-                  <div className="w-full h-full md:h-[842px] overflow-hidden rounded-[8px]">
+                  <div className="w-full h-full lg:h-[842px] overflow-hidden rounded-[8px]">
                     <PrismicNextImage
                       field={item.image}
                       className="w-full h-full object-cover"
@@ -109,7 +110,7 @@ const CarouselAccordion = ({ primary }: Content.CaseStudiesSectionSlice) => {
 
         {/* Accordion */}
         <div
-          className="flex flex-col w-full md:min-w-[500px] max-w-[500px] gap-10 h-full"
+          className="flex flex-col w-full lg:min-w-[500px] lg:max-w-[500px] gap-10 h-full"
           data-aos="fade-left"
         >
           <Accordion
@@ -121,7 +122,7 @@ const CarouselAccordion = ({ primary }: Content.CaseStudiesSectionSlice) => {
             }}
             type="single"
             collapsible
-            className="h-full flex flex-col justify-between"
+            className="flex flex-1 flex-col justify-between"
           >
             {primary.casestudies.map((item, index) => (
               <AccordionItem
@@ -129,11 +130,11 @@ const CarouselAccordion = ({ primary }: Content.CaseStudiesSectionSlice) => {
                 className="border-none data-[state=open]:border-b"
                 value={index + "-case"}
                 onClick={() => {
-                //   console.log("🚀 ~ CarouselAccordion ~ index:", index);
+                  //   console.log("🚀 ~ CarouselAccordion ~ index:", index);
                   setSelectedIndex(index);
                 }} // Đồng bộ với Carousel
               >
-                <AccordionTrigger className="hover:no-underline &[svg]:hidden">
+                <AccordionTrigger className="hover:no-underline &[svg]:hidden lg:py-0">
                   <div className="flex items-center gap-8">
                     <p className="text-[#B1B1B1] text-xl font-normal">
                       0{index + 1}.
@@ -144,7 +145,12 @@ const CarouselAccordion = ({ primary }: Content.CaseStudiesSectionSlice) => {
                         heading3: ({ children }) => (
                           <Heading
                             size="sm"
-                            className="text-[#B1B1B1] text-base text-start md:text-xl font-semibold"
+                            className={cn(
+                              "text-[#B1B1B1] text-base text-start md:text-xl font-semibold",
+                              {
+                                "text-white": index === selectedIndex,
+                              }
+                            )}
                           >
                             {children}
                           </Heading>
@@ -154,7 +160,16 @@ const CarouselAccordion = ({ primary }: Content.CaseStudiesSectionSlice) => {
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-[#B1B1B1] text-sm md:text-base text-start font-normal pl-14">
-                  <PrismicRichText field={item.description} />
+                  <PrismicRichText
+                    field={item.description}
+                    components={{
+                      paragraph: ({ children }) => (
+                        <Paragraph className="text-[#B1B1B1] text-sm md:text-base text-start font-normal">
+                          {children}
+                        </Paragraph>
+                      ),
+                    }}
+                  />
                   <Button variant="link" className="font-semibold">
                     View All
                     <ChevronRight className="w-4 h-4" />

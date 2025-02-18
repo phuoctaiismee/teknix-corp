@@ -30,7 +30,7 @@ const CaseStudiesSectionFeatures = ({
   return (
     <div
       style={{ backgroundImage: `url(${primary.background.url})` }}
-      className="bg-cover bg-center bg-no-repeat md:h-[1150px] w-full flex items-center justify-center py-12 md:py-20"
+      className="bg-cover bg-center bg-no-repeat lg:h-[1150px] w-full flex items-center justify-center py-12 md:py-20"
     >
       <CarouselAccordion
         primary={primary}

@@ -77,10 +77,10 @@ const NewAndMediaSectionFeatures = ({
   ));
 
   return (
-    <Bounded className="md:h-[540px] w-full flex items-center justify-center py-12 md:py-20">
-      <div className="hidden md:block ">
-        <Carousel className="w-full flex items-center gap-[120px]">
-          <div className="flex flex-col gap-12  min-w-[280px]">
+    <Bounded className="xl:h-[540px] w-full flex items-center justify-center py-12 md:py-20">
+      <div className="hidden lg:block ">
+        <Carousel className="w-full flex flex-col xl:flex-row xl:items-center gap-[120px]">
+          <div className="flex flex-row xl:flex-col justify-between xl:justify-start gap-12  min-w-[280px]">
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
                 <PrismicRichText
@@ -140,7 +140,7 @@ const NewAndMediaSectionFeatures = ({
           </CarouselContent>
         </Carousel>
       </div>
-      <div className="block md:hidden w-full">
+      <div className="block lg:hidden w-full">
         <div className="flex flex-col gap-12 w-full">
           <div className="flex flex-col gap-4 w-full">
             <div className="flex flex-col gap-2 w-full">

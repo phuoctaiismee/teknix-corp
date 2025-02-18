@@ -8,7 +8,7 @@ const VolunteerSectionFeatures = ({
   primary,
 }: Content.VolunteerSectionSlice) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2">
+    <div className="grid grid-cols-1 lg:grid-cols-2">
       <div className="py-12 md:py-[120px] px-4 md:pl-12 lg:pl-20 2xl:pl-32 flex flex-col justify-between gap-6 md:gap-16">
         <div className="flex flex-col gap-2">
           <PrismicRichText
@@ -77,7 +77,7 @@ const VolunteerSectionFeatures = ({
       </div>
       <div
         style={{ backgroundImage: `url(${primary.image.url})` }}
-        className="min-h-[257.25px]  h-full  bg-cover bg-no-repeat md:bg-cover md:bg-center py-[100px] md:py-0 order-first md:order-last"
+        className="min-h-[257.25px]  h-full  bg-cover bg-no-repeat md:bg-cover md:bg-center py-[100px] md:py-0 order-first lg:order-last"
       />
     </div>
   );

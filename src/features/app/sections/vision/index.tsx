@@ -11,7 +11,7 @@ const VisionForFutureSection = ({
   return (
     <div
       style={{ backgroundImage: `url(${primary.background.url})` }}
-      className="md:h-[908px] bg-cover bg-center py-12 md:py-[100px]"
+      className="lg:h-[908px] bg-cover bg-center py-12 md:py-[100px]"
     >
       <Bounded className="h-full flex flex-col justify-between gap-12">
         <div className="flex flex-col gap-2">
@@ -44,7 +44,7 @@ const VisionForFutureSection = ({
             }}
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-8">
           {primary.contents.map((item, index) => (
             <CardVision key={index} {...item} />
           ))}

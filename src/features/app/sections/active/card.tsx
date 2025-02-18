@@ -22,7 +22,7 @@ const ActiveCard = ({
     <div
       data-aos="fade-up"
       className={cn(
-        "md:h-[542px] w-full rounded-[8px] bg-white hover:shadow-lg transition-all duration-300 group cursor-pointer",
+        "md:h-[542px] w-full rounded-[8px] bg-white hover:shadow-lg transition-all duration-300 group cursor-pointer overflow-hidden",
         {
           "md:h-[364px] md:grid md:grid-cols-2": orientation === "horizontal",
         },
@@ -34,15 +34,27 @@ const ActiveCard = ({
           "md:h-full": orientation === "horizontal",
         })}
       >
-        <Image src={image} alt={title} fill className="object-cover group-hover:scale-105 transition-all duration-300" />
+        <Image
+          src={image}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover group-hover:scale-105 transition-all duration-300"
+        />
       </div>
       <div
-        className={cn("md:h-[246px] px-4 md:px-12 py-4 md:py-8 flex flex-col gap-6", {
-          "md:h-full md:justify-between": orientation === "horizontal",
-        })}
+        className={cn(
+          "md:h-[246px] px-4 md:px-12 py-4 md:py-8 flex flex-col gap-6",
+          {
+            "md:h-full md:justify-between": orientation === "horizontal",
+          }
+        )}
       >
         <div className="flex flex-col gap-4">
-          <Heading size="sm" className="font-semibold text-[17px] md:text-[28px]">
+          <Heading
+            size="sm"
+            className="font-semibold text-[17px] md:text-[28px]"
+          >
             {title}
           </Heading>
           <div className="bg-[#EAECF0] h-[1px] w-full" />

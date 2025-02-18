@@ -7,12 +7,15 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
+import { removeBoldUnicode } from "@/utils/text";
 
 interface BreadCrumbNewDetailProps {
   currentPage: string;
+  locale: string;
 }
 
-const BreadCrumbNewDetail = ({ currentPage }: BreadCrumbNewDetailProps) => {
+const BreadCrumbNewDetail = ({ currentPage, locale }: BreadCrumbNewDetailProps) => {
+  const currentPageText = removeBoldUnicode(currentPage);
   return (
     <Breadcrumb className="font-medium ">
       <BreadcrumbList className="flex-nowrap">
@@ -24,12 +27,12 @@ const BreadCrumbNewDetail = ({ currentPage }: BreadCrumbNewDetailProps) => {
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbLink asChild className="text-[#B1B1B1]">
-            <Link href="/news">News</Link>
+            <Link href={`/${locale}/news`}>News</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage className="font-semibold line-clamp-1">
+          <BreadcrumbPage className="font-normal line-clamp-1">
             {currentPage}
           </BreadcrumbPage>
         </BreadcrumbItem>

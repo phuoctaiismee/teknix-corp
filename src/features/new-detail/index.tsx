@@ -8,10 +8,11 @@ interface NewDetailFeaturesProps {
 }
 const NewDetailFeatures = async ({ slug, locale }: NewDetailFeaturesProps) => {
   const data = await getPostBySlug(slug);
+  const feature_image = data?.feature_image;
   return (
     <div className="flex flex-col">
-      <HeroNewSection />
-      <NewsContainer {...data} />
+      <HeroNewSection image={feature_image || ""} />
+      <NewsContainer {...data} locale={locale} />
     </div>
   );
 };

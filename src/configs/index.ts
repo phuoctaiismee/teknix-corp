@@ -32,7 +32,7 @@ export const META_DATA = {
 
 export const ROUTES = {
   HOME: "",
-  NEWS: "/news",
-  NEWS_DETAIL: "/news/:slug",
+  NEWS: "news",
+  NEWS_DETAIL: "news/:slug",
 };
 

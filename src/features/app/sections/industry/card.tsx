@@ -9,7 +9,7 @@ const IndustryCard = ({
   return (
     <div
       data-aos="fade-up"
-      className="h-[174px] rounded-[6px] group py-4 px-6 hover:shadow-md  bg-white transition-all duration-300 flex flex-col justify-between border border-[#000000]/[10%] z-10 cursor-pointer"
+      className="h-[174px] rounded-[6px] group py-4 px-6 hover:shadow-[0px_12px_48px_0px_#0000001F]  bg-white transition-all duration-300 flex flex-col justify-between border border-[#00000005] z-10 cursor-pointer"
     >
       {icon === "agriculture" && (
         <svg

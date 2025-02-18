@@ -14,9 +14,9 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 const IndustrySectionFeatures = ({ primary }: Content.IndustrySectionSlice) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <div className="relative md:h-[690px] overflow-hidden bg-[#F9FAFB] flex items-center justify-center py-12 md:py-20">
+    <div className="relative lg:h-[690px] overflow-hidden bg-[#F9FAFB] flex items-center justify-center py-12 md:py-20">
       <Background />
-      <Bounded className="grid grid-cols-1 md:grid-cols-3 gap-12 h-full items-center">
+      <Bounded className="grid grid-cols-1 lg:grid-cols-3 gap-12 h-full items-center">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <PrismicRichText

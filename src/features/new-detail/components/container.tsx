@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import RelatedPost from "./related-post";
 import { Post } from "@/stores/features/news";
 
-const NewsContainer = ({ html, title , created_at}: Post) => {
+const NewsContainer = ({ html, title, created_at, locale }: Post & { locale: string }) => {
   const content = html;
   const happenData = [
     {
@@ -41,18 +41,15 @@ const NewsContainer = ({ html, title , created_at}: Post) => {
   ];
   return (
     <Bounded className="py-12 md:py-20">
-      <div className="grid grid-cols-1 md:grid-cols-3 divide-x divide-[#E6E6E6]">
-        <div className="col-span-2 md:pr-12">
+      <div className="grid grid-cols-1 lg:grid-cols-3 divide-x divide-[#E6E6E6]">
+        <div className="col-span-2 lg:pr-12">
           <div className="flex flex-col gap-4">
-            <BreadCrumbNewDetail currentPage={title} />
-            <InfoNewDetail
-              title={title}
-              date={created_at}
-            />
+            <BreadCrumbNewDetail currentPage={title} locale={locale} />
+            <InfoNewDetail title={title} date={created_at} />
             <ContentHTML content={content} />
           </div>
         </div>
-        <div className="hidden md:block col-span-1 md:pl-12">
+        <div className="hidden lg:block col-span-1 lg:pl-12">
           <div className="flex flex-col w-full gap-8 divide-y divide-[#E6E6E6]">
             <div className="flex flex-col gap-8">
               {/* SEARCH */}
@@ -98,6 +95,11 @@ const NewsContainer = ({ html, title , created_at}: Post) => {
             {/* RELATED POST */}
             <RelatedPost />
           </div>
+        </div>
+      </div>
+      <div className="lg:hidden">
+        <div className="flex flex-col gap-8">
+          <RelatedPost />
         </div>
       </div>
     </Bounded>

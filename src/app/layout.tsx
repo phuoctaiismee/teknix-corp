@@ -9,25 +9,31 @@ const svn_gliroy = localFont({
     {
       path: "../../public/fonts/svn_gliroy_regular.otf",
       weight: "400",
-      style: "regular",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/svn_gliroy_medium.otf",
+      weight: "500",
+      style: "normal",
     },
     {
       path: "../../public/fonts/svn_gliroy_semibold.otf",
       weight: "600",
-      style: "semibold",
+      style: "normal",
     },
     {
       path: "../../public/fonts/svn_gliroy_bold.otf",
       weight: "700",
-      style: "bold",
+      style: "normal",
     },
     {
       path: "../../public/fonts/svn_gliroy_heavy.otf",
       weight: "800",
-      style: "heavy",
+      style: "normal",
     },
   ],
 });
+
 export const metadata: Metadata = {
   metadataBase: new URL(WEBSITE_HOST_URL),
   title: {
@@ -57,16 +63,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: WEBSITE_HOST_URL,
   },
-  keywords: [
-    "Mister Tourism World",
-    "Vietnam, male pageant",
-    "tourism event",
-    "cultural ambassador",
-    "international pageant",
-    "beauty contest",
-    "travel",
-    "Mister Tourism",
-  ],
+  keywords: META_DATA.keywords,
   icons: {
     icon: [
       {
@@ -137,7 +134,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${svn_gliroy.className} antialiased`}>
-        <GlobalRootLayout params={params}>{children}</GlobalRootLayout>
+        <GlobalRootLayout>{children}</GlobalRootLayout>
       </body>
     </html>
   );

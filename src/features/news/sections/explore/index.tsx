@@ -47,10 +47,10 @@ const ExploreNewSectionFeatures = ({ primary }: Content.ExploreNewSlice) => {
             </Button>
           </div>
         </div>
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <GridContent />
         </div>
-        <div className="block md:hidden">
+        <div className="block lg:hidden">
           <CarouselContent/>
         </div>
       </Bounded>

@@ -13,7 +13,7 @@ const SolutionSection = ({
   return (
     <div className="h-[882px] md:h-[1010px] py-12 md:py-20 bg-[#F2F4F7] relative flex items-center justify-center overflow-hidden">
       <SolutionVector />
-      <div className="flex flex-col gap-14">
+      <div className="flex flex-col w-full gap-14">
         <Bounded className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <PrismicRichText
@@ -51,7 +51,7 @@ const SolutionSection = ({
               paragraph: ({ children }) => (
                 <Paragraph
                   size="sm"
-                  className="text-[#6D6D6D]"
+                  className="text-[#6D6D6D] max-w-[960px]"
                   data-aos="fade-up"
                 >
                   {children}

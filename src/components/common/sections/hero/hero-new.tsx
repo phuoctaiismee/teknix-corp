@@ -2,7 +2,7 @@ import Bounded from "../../containers/bounded";
 import BreadcrumbNews from "@/features/app/sections/hero/breadcrumb";
 import Heading from "../../typography/heading";
 import { createClient } from "@/prismicio";
-const HeroNewSection = async () => {
+const HeroNewSection = async ({ image }: { image: string }) => {
   const hero = await createClient().getByUID("page", "news", {
     graphQuery: `
      {
@@ -31,7 +31,7 @@ const HeroNewSection = async () => {
   return (
     <div
       style={{
-        backgroundImage: `url(${background})`,
+        backgroundImage: `url(${image || background})`,
       }}
       className="h-[600px] md:h-[650px] bg-cover bg-no-repeat bg-center"
     >
