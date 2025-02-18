@@ -1,9 +1,4 @@
-import { getLocales } from "@/prismicio";
-import { shortLocaleToLong } from "@/i18n/routing";
-import { createClient } from "@/prismicio";
 import { IGlobalLayoutProps } from "@/types";
-import { BannerProvider } from "@/components/common/banners/banner-provider";
-import BannerHeader from "@/components/common/banners";
 import NextIntlProvider from "@/providers/next-intl-provider";
 import SiteHeader from "@/components/common/header";
 import SiteFooter from "@/components/common/footer";

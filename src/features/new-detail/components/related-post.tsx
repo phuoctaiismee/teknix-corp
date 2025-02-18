@@ -12,14 +12,18 @@ import { useGetListNewsQuery } from "@/stores/features/news";
 import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const RelatedPost = () => {
+  const [locale, setLocale] = useState<string | null>(null);
   const { data } = useGetListNewsQuery({
     page: 1,
     limit: 3,
   });
-  const locale = sessionStorage.getItem("locale");
+  useEffect(() => {
+    const locale = sessionStorage.getItem("locale");
+    setLocale(locale);
+  }, []);
   return (
     <div className="flex flex-col gap-6 pt-6">
       <Heading className="text-base md:text-lg font-bold">Related Post</Heading>
@@ -62,7 +66,7 @@ const RelatedPost = () => {
           <CarouselContent>
             {data?.posts.map((item, index) => (
               <CarouselItem key={index}>
-                <CardNewHorizontal key={index} {...item}  />
+                <CardNewHorizontal key={index} {...item} />
               </CarouselItem>
             ))}
           </CarouselContent>
